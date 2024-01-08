@@ -7,6 +7,7 @@ mongoose.connect("mongodb://localhost:27017/newDb")
 
 
 
+
 const playlistSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -28,14 +29,33 @@ const Playlist = new mongoose.model("Playlist", playlistSchema);
 
 
 //create document or insert
+const createDocument  = async ( ) => {
+    try{
+        
+        const jsPlaylist = new Playlist({
+            name: "javascript",
+            ctype: "front-end",
+            videos: 150,
+            active: true
+        }) 
+        const mongoPlaylist = new Playlist({
+            name: "mongoDB",
+            ctype: "database",
+            videos: 47,
+            active: true
+        })
+        const expressPlaylist = new Playlist({
+            name: "express JS",
+            ctype: "back-end",
+            videos: 20,
+            active: true
+        })
+        const result = await Playlist.insertMany([jsPlaylist,mongoPlaylist,expressPlaylist])
+        console.log(result);
+    } catch(err){
+        console.log(err);
+    }
+}
+createDocument()
 
 
-const reactPlaylist = new Playlist({
-    name: "React js",
-    ctype: "front end",
-    videos: 50,
-    active: true
-})
-
-
-reactPlaylist.save()
