@@ -60,7 +60,7 @@ const createDocument  = async ( ) => {
 
 const getDocument = async () => {
     
-        const result = await Playlist.find({ctype:"database"})
+        const result = await Playlist.find({ctype:"back-end"}).select({name:1}).limit(1)
         console.log(result);
     
 }
