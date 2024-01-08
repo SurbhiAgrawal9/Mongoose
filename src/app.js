@@ -56,6 +56,16 @@ const createDocument  = async ( ) => {
         console.log(err);
     }
 }
-createDocument()
+//createDocument()
+
+const getDocument = async () => {
+    
+        const result = await Playlist.find({ctype:"database"})
+        console.log(result);
+    
+}
+
+getDocument();
+
 
 
